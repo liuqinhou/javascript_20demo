@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进度条</title>
+
+  <style>
+    .fa {
+      width: 200px;
+      height: 40px;
+      border: 1px solid black;
+    }
+
+    .son {
+      width: 0px;
+      height: 40px;
+      background-color: #f0f;
+      text-align: center;
+      line-height: 40px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="fa">
+    <div class="son">
+      <span id="progress">0</span><span>%</span>
+    </div>
+  </div>
+  <button id="but">安装</button>
+
+  <script>
+    let installBtn = document.getElementById("but")
+    let progressVal = document.getElementById("progress")
+    let progressView = document.getElementsByClassName("son")
+    let timer = null
+    installBtn.onclick = () => {
+      let progress = 0
+      let increaseby = 10
+      // 没有采用定时，会一下子到达100%
+      /* while (progress < 200) {
+        progress += increaseby
+        console.log(progressView)
+        progressView[0].style.width = progress + 'px'
+        progressVal.innerText = progress / 2
+      } */
+
+      // 采用定时任务执行进度条填充
+      let num = 0
+      // 注意：这里可以防止快速点击安装按钮时，多个定时器同时执行，直观上就是多个进度条同时前进
+      if (timer == null) {
+        timer = setInterval(() => {
+          if (progress < 200) {
+            progress += increaseby
+            progressView[0].style.width = progress + 'px'
+            progressVal.innerText = progress / 200 * 100
+          } else {
+            clearInterval(timer)
+          }
+          console.log(num++)
+        }, 100);
+      }
+
+    }
+  </script>
+</body>
+
+</html>

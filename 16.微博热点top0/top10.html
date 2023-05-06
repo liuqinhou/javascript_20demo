@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微博热点top10</title>
+
+  <style>
+    div {
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    li {
+      width: 400px;
+      height: 40px;
+      border-bottom: 1px solid #eee;
+      line-height: 40px;
+    }
+
+    a {
+      text-decoration: none;
+      color: blue;
+      margin-left: 50px;
+      display: inline-block;
+      width: 280px;
+    }
+
+    h2 {
+      float: left;
+      margin-right: 230px;
+    }
+
+    button {
+      padding: 5px;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>百度热榜</h2>
+    <button id="but">换一换</button>
+    <ul>
+      <li><a href="">朱广权神总计1</a><span>4730000</span></li>
+      <li><a href="">朱广权神总计2</a><span>4720000</span></li>
+      <li><a href="">朱广权神总计3</a><span>4710000</span></li>
+      <li><a href="">朱广权神总计4</a><span>4630000</span></li>
+      <li><a href="">朱广权神总计5</a><span>4630000</span></li>
+      <li><a href="">朱广权神总计6</a><span>4530000</span></li>
+      <li><a href="">朱广权神总计7</a><span>4430000</span></li>
+    </ul>
+  </div>
+
+  <!-- <script>
+    console.log("hello world")
+  </script> -->
+
+  <script src="jquery-migrate-1.4.1.js">
+    console.log("hello world")
+    $(function () {
+      $.ajax({
+        type: "get",
+        url: "./top.json",
+        "data": {},
+        dataType: "json",
+        success: function (res) {
+          console.log(res)
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

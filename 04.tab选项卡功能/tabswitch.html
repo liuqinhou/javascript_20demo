@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab选项卡功能</title>
+
+    <style>
+        ul,
+        li {
+            /* 消除默认的内外边距 */
+            margin: 0;
+            padding: 0;
+            /* 用于消除列表的样式（前面的黑点） */
+            list-style: none;
+        }
+
+        ul {
+            overflow: hidden;
+        }
+
+        li {
+            width: 100px;
+            height: 40px;
+            /* 行高和控件高度一致，保证文字上下居中 */
+            line-height: 40px;
+            /* 保证文字左右居中 */
+            text-align: center;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            /* 靠左悬浮，从而实现列表项一行展示，否则展示成4行 */
+            float: left;
+
+        }
+
+        div {
+            /* 之所以是406而不是400，是因为li的边框宽度为1px，
+            而总共有6个边是在img宽度内的，所以img需要加上这部分宽度才能和ul保持一样宽 */
+            width: 406px;
+            height: 406px;
+            border: 1px solid #ccc;
+        }
+
+        img {
+            width: 406px;
+            height: 406px;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <ul>
+        <li>大橘</li>
+        <li>英短</li>
+        <li>美短</li>
+        <li>布偶</li>
+    </ul>
+    <div id="img">
+        <img id="image1" src="./daju.webp" alt="图片" style="display: block;">
+        <img id="image2" src="./xiaohua.webp" alt="图片">
+        <img id="image3" src="./daju.webp" alt="图片">
+        <img id="image4" src="./xiaohua.webp" alt="图片">
+    </div>
+
+    <script>
+        let li = document.getElementsByTagName("li")
+        let img = document.getElementsByTagName("img")
+
+        for (let i = 0; i < li.length; i++) {
+            const element = li[i];
+            element.onmouseover = function () {
+                //鼠标移入，当前tab背景颜色变成黄色
+                this.style.backgroundColor = 'yellow'
+                //让所有的图片先隐藏
+                for (let j = 0; j < img.length; j++) {
+                    const element = img[j];
+                    element.style.display = "none"
+                }
+                //再展示当前需要展示的图片
+                img[i].style.display = 'block'
+            }
+
+            //鼠标移出，当前tab背景颜色变成灰色
+            element.onmouseout = () => {
+                element.style.backgroundColor = '#eee'
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

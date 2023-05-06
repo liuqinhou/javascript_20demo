@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 250px;
+            margin: 100px auto;
+        }
+
+        .show {
+            width: 200px;
+            height: 500px;
+            border: 1px solid rgb(235, 235, 235);
+            display: none;
+        }
+
+        #val {
+            width: 200px;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="content">
+        <div class="search">
+            <input id="val" type="text" name="search" style="border-color: blue" placeholder="请输入关键字"/>
+            <input type="button" name="button" value="搜索" id="sub"/>
+        </div>
+        <div class="show" id="show">
+        </div>
+    </div>
+
+    <script>
+        let arr = ['web前端精英特训班 980元', 'HTML核心技术 199元', 'CSS核心技术 299元', 'Vue核心技术 599元',
+    'CSS+HTML核心技术 299元', 'WEB前端在线商城 99元', 'javascript核心技术 399元', 'javascript高级技术 899元']
+        let input = document.getElementById("val")
+        let submit = document.getElementById("sub")
+        let show = document.getElementById("show")
+        input.onkeyup = () => {
+            show.style.display = "block"
+            let str = ''
+            arr.forEach(element => {
+                let res = element.indexOf(input.value)
+                if (res != -1) {
+                    str += '<p>' + element + '</p>'
+                }
+            });
+            if (!input.value || !str) {
+                show.innerHTML = '<p>暂无结果</p>'
+            } else {
+                show.innerHTML = str
+            }
+            
+        }
+        input.onblur = () => {
+                show.style.display = 'none'
+                input.value = ''
+            }
+            
+    </script>
+
+</body>
+</html>

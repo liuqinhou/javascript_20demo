@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生信息表</title>
+
+  <style>
+    #app {
+      position: relative;
+      height: 200px;
+      width: 400px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid red;
+    }
+
+    fieldset {
+      position: absolute;
+      width: 100px;
+      border: 0px;
+      top: -18px;
+      left: 17px;
+      background-color: #fff;
+    }
+
+    input {
+      height: 20px;
+    }
+
+    table {
+      width: 460px;
+      margin: 0 auto;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+    }
+
+    thead {
+      background-color: pink;
+    }
+
+    table th,
+    table td {
+      padding: 5px 10px;
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <fieldset>学生录入系统</fieldset>
+    <p>
+      <span>姓名：</span>
+      <input type="text" name="name" class="name">
+    </p>
+    <p>
+      <span>年龄：</span>
+      <input type="text" name="age" class="age">
+    </p>
+    <p>
+      <span>性别：</span>
+      <select name="sex" id="sex">
+        <option value="男">男</option>
+        <option value="女">女</option>
+      </select>
+    </p>
+    <p>
+      <span>手机：</span>
+      <input type="text" name="phone" class="phone">
+    </p>
+    <p>
+      <button id="but">确认提交</button>
+    </p>
+  </div>
+
+  <table id="info" cellspacing="0">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>手机</th>
+        <th>删除</th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+      <!-- <tr>
+        <td>张三</td>
+        <td>18</td>
+        <td>男</td>
+        <td>18708119829</td>
+        <td>删除</td>
+      </tr> -->
+    </tbody>
+  </table>
+
+  <script>
+    let sex = document.getElementById('sex')
+    let inputs = document.getElementsByTagName('input')
+    let but = document.getElementById('but')
+    let tbody = document.getElementsByClassName('tbody')[0]
+
+    let infoArr = []
+    but.onclick = () => {
+      let student = {
+        name: inputs[0].value,
+        age: inputs[1].value,
+        sex: sex.value,
+        phone: inputs[2].value
+      }
+      infoArr.push(student)
+      console.log(infoArr)
+      let tr = ''
+      infoArr.forEach((item, index) => {
+        tr += "<tr class='newTr'> "
+          + "<td>" + item.name + "</td>"
+          + "<td>" + item.age + "</td>"
+          + "<td>" + item.sex + "</td>"
+          + "<td>" + item.phone + "</td>"
+          + "<td onclick='del(" + index + ")'>" + "<a href='#'>删除</a>" + "</td>"
+          + "</tr>"
+        console.log(tr)
+        tbody.innerHTML = tr
+      })
+    }
+
+    function del(index) {
+      infoArr.splice(index)     //删除数组中元素
+      let info = document.getElementsByClassName('newTr')[index]    //定位到要删除的子元素
+      tbody.removeChild(info)   //删除tbody的子元素
+    }
+  </script>
+</body>
+
+</html>

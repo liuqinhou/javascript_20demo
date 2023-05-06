@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电影票选座</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: #ccc;
+      /* 用于消除列表的样式（前面的黑点） */
+      list-style: none;
+      float: left;
+      margin: 5px 5px;
+    }
+
+    .container {
+      position: relative;
+      width: 540px;
+      height: 350px;
+      border: #ccc 2px solid;
+      margin: 10px auto;
+    }
+
+    .pingmu {
+      width: 120px;
+      height: 40px;
+      border: #caf 1px solid;
+      line-height: 40px;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      /* 往左偏移半个身位刚好位于水平居中 */
+      margin-left: -60px;
+      bottom: 0px;
+
+    }
+
+    .click {
+      background-color: yellow;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <div class="pingmu">屏幕中央</div>
+  </div>
+
+  <script>
+    let lis = document.getElementsByTagName("li")
+    console.log(typeof lis)
+    /* lis.forEach(element => {
+      element.onclick = () => {
+        if (element.getAttribute('class')) {
+          element.setAttribute('class', '')
+          element.innerText = ''
+        } else {
+          element.setAttribute('class', 'click')
+          element.innerText = '已选座'
+        }
+      }
+    }); */
+
+    for (const element of lis) {
+      element.onclick = () => {
+        if (element.getAttribute('class')) {
+          element.setAttribute('class', '')
+          element.innerText = ''
+        } else {
+          element.setAttribute('class', 'click')
+          element.innerText = '已选座'
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

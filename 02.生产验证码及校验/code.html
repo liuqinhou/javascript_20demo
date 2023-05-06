@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+
+    <style>
+        span {
+            background-color: rgb(235,235,235);
+            color: blue;
+            font-size: 25pt;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <p><span id="codes">adf34f</span>  看不清换一张</p>
+        <p>验证码：<input type="text" id="inputcodes"></p>
+        <button id="submit">确定</button>
+    </div>
+    
+    <script>
+        window.onload = () => {
+            let codes = document.getElementById("codes")
+            let generateCodes = generateRandCodes(4)
+            codes.innerText = generateCodes
+            document.getElementById("submit").onclick  = () => {
+                let inputs = document.getElementById("inputcodes").value
+                console.log(inputs)
+                if(inputs == generateCodes) {
+                    alert("恭喜您，验证成功")
+                } else {
+                    alert("很遗憾，验证失败")
+                    
+                }
+            }
+        }
+
+        function generateRandCodes(num) {
+            let codes = "";
+            var arr = ["0", "1","2", "3","4", "5","6", "7","8", "9","a", "b","c", "d","e", "f"];
+            for (let i = 0; i< num; i++) {
+                let index = Math.floor(Math.random() * arr.length)
+                console.log(index)
+                console.log(arr[index])
+
+                codes = codes + arr[index]
+            }
+            console.log(codes)
+            return codes;
+        }
+    </script>
+</body>
+</html>

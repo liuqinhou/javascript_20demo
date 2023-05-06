@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相册</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #photo {
+      width: 415px;
+      height: 415px;
+    }
+
+    .snail {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="container">
+    <img src="./daju.webp" alt="" id="photo">
+    <div>
+      <img src="./daju.webp" alt="" class="snail">
+      <img src="./xiaohua.webp" alt="" class="snail">
+      <img src="./daju.webp" alt="" class="snail">
+      <img src="./xiaohua.webp" alt="" class="snail">
+    </div>
+  </div>
+
+  <script>
+    let imgs = document.getElementsByTagName("img")
+    for (let i = 1; i < imgs.length; i++) {
+
+      imgs[i].onmouseover = () => {
+        imgs[0].src = imgs[i].src
+        imgs[i].style.border = "2px solid black"
+      }
+
+      imgs[i].onmouseout = () => {
+        imgs[i].style.border = "none"
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>移动盒子</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    button {
+      position: relative;
+      top: 120px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="box"></div>
+  <p>
+    <button id="start">点击开始</button>
+    <button id="stop">点击停止</button>
+  </p>
+
+
+  <script>
+    let box = document.getElementById("box")
+    let start = document.getElementById("start")
+    let stop = document.getElementById("stop")
+    let left = 0
+
+    let timer = null
+    start.onclick = () => {
+      let step = 10
+      if (timer == null) {
+        timer = setInterval(() => {
+          left += step
+          box.style.left = left + 'px'
+          if (left >= document.body.offsetWidth - box.offsetWidth || left <= 0) {
+            //注意：这里设计的很精妙！！
+            step = -step
+          }
+          console.log("running")
+        }, 100)
+      }
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

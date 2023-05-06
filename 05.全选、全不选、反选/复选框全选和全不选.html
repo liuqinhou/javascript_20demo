@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复选框全选全不选</title>
+</head>
+
+<body>
+  <form action="">
+    <p><input type="checkbox" name="" id="">尼古拉斯·赵四</p>
+    <p><input type="checkbox" name="" id="">莱昂纳多·刘能</p>
+    <p><input type="checkbox" name="" id="">约翰尼·宋小宝</p>
+    <p><input type="checkbox" name="" id="">布拉德·小沈阳</p>
+  </form>
+  <button id="all">全选</button>
+  <button id="none">全不选</button>
+  <button id="other">反选</button>
+
+  <script>
+    let all = document.getElementById("all")
+    let none = document.getElementById("none")
+    let other = document.getElementById("other")
+
+    let inputs = document.getElementsByTagName("input")
+    all.onclick = () => {
+      for (const iterator of inputs) {
+        iterator.checked = true
+      }
+    }
+
+    none.onclick = () => {
+      for (const iterator of inputs) {
+        iterator.checked = false
+      }
+    }
+
+    other.onclick = () => {
+      for (const iterator of inputs) {
+        //需要优化
+        // if (iterator.checked) {
+        //   iterator.checked = false
+        // } else {
+        //   iterator.checked = true
+        // }
+
+        //优化后
+        iterator.checked = !iterator.checked
+      }
+    }
+  </script>
+</body>
+
+</html>

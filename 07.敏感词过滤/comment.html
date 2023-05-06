@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>敏感词过滤</title>
+
+  <style>
+    textarea {
+      width: 200px;
+      height: 150px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>敏感词过滤</h1>
+  <div>
+    <textarea name="inputs" id="words" cols="30" rows="10"></textarea>
+  </div>
+  <button id="publish">发布</button>
+  <div>
+    <textarea name="target" id="result" cols="30" rows="10"></textarea>
+  </div>
+
+  <script>
+    let blackWords = ["习包子", "妈的", "共匪", "娘希匹"]
+    let words = document.getElementById("words")
+    let result = document.getElementById("result")
+    let publish = document.getElementById("publish")
+
+    publish.onclick = () => {
+      let text = words.value
+      //console.log(text)
+      blackWords.forEach(elements => {
+        //方案1，使用字符串的repalceAll匹配字符串中所有的匹配项
+        //text = text.replaceAll(elements, '*'.repeat(elements.length))
+
+        //方案2，使用字符串的replace方法，但是正则匹配对象是全局匹配，所以也会匹配text中所有满足条件的内容
+        text = text.replace(new RegExp(elements, 'g'), '*'.repeat(elements.length))
+      })
+      result.value = text
+    }
+
+  </script>
+
+</body>
+
+</html>

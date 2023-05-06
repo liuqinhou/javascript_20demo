@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10秒支付倒计时</title>
+
+    <style>
+        .productInfo {
+            background-color: rgb(235,235,235);
+            width: 200px;
+            height: 280px;
+            font-size: 20;
+            margin: 0 auto;    
+            padding: 20px;
+        }
+
+        button {
+            margin: 10px 15px;
+        }
+    </style>
+
+    
+</head>
+<body>
+
+    <div class="productInfo">
+        <p>商品： Web前端课程</p> 
+        <p>原价： 1980元</p>
+        <p>现价： 1.98元</p>
+        <p>内容： HTML、CSS、JS</p>
+        <p>地址： 北京市朝阳区</p>
+        <p>
+            <button>取消</button>
+            <button id="payBtn">支付</button>
+        </p>
+        
+    </div>
+
+    <script>
+        let pay = document.getElementById("payBtn");
+        //let pay = document.getElementsByTagName("button")[1];
+        //console.log(pay)
+        pay.onclick = function (event) {
+            //alert("支付按钮被点击了")
+            if (confirm("您确定要支付吗？\n\n 请确认！")) {
+                //location.href = "./succ.html";
+                //location.assign("./succ.html");
+                //location.replace("./succ.html");
+                location.reload("./succ.html");
+            }
+        }
+    </script>
+    
+</body>
+</html>

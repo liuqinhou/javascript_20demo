@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    a {
+      text-decoration: none;
+      color: #cd2525;
+    }
+
+    form {
+      position: relative;
+      width: 600px;
+      padding: 10px;
+      border: 2px solid #000;
+      margin: 20px auto;
+    }
+
+    span {
+      position: absolute;
+      top: -13px;
+      left: 17px;
+      background-color: #fff;
+    }
+
+    table {
+      width: 600px;
+      border-top: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      margin: 0 auto;
+    }
+
+    thead {
+      background-color: pink;
+    }
+
+    table th,
+    table td {
+      padding: 5px 10px;
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="#">
+    <span>学生录入系统</span>
+    <p>姓名： <input type="text"></p>
+    <p>年龄： <input type="text"></p>
+    <p>
+      性别： <select name="" id="sex">
+        <option value="男">男</option>
+        <option value="女">女</option>
+      </select>
+    </p>
+    <p> 手机： <input type="text"></p>
+    <button id="button">确认提交</button>
+  </form>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>手机</th>
+        <th>删除</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  <script>
+    let btn = document.getElementById('button')
+    let sex = document.getElementById('sex');
+    let input = document.getElementsByTagName('input');
+    let tbody = document.querySelector('tbody');
+    // 每有一组数据，就封装成对象push到 arr 中
+    // let arr = [{
+    //     name: "李四",
+    //     age: 19,
+    //     sex: "男",
+    //     tel: "1234567290"
+    // }];
+    let arr = [];
+    let index;
+    // 当点击 提交按钮 之后，把输入的数据存入arr 数组中
+    btn.addEventListener('click', function () {
+      let obj = {
+        name: input[0].value,
+        age: input[1].value,
+        sex: sex.value,
+        tel: input[2].value
+      };
+      arr.push(obj);
+      //1. 创建一行
+      let tr = document.createElement('tr');
+      // 2. 插入tbody
+      tbody.appendChild(tr);
+      //3. 一行创建单元格
+      for (k in arr[arr.length - 1]) {
+        tr.setAttribute('index', index);
+        let td = document.createElement('td');
+        td.innerHTML = arr[arr.length - 1][k];
+        tr.appendChild(td);
+      }
+      index++;
+      // 4. 添加删除的单元格
+      let td = document.createElement('td');
+      td.innerHTML = '<a href="javascript:;">删除</a>';
+      tr.appendChild(td);
+    })
+
+        //5. 给每一个 arr数组里面的元素绑定 点击删除事件
+
+        // 获取元素 a,因为a是动态创建的 ，要使用on的方法来绑定事件，用事件委托
+  </script>
+</body>
+
+</html>
